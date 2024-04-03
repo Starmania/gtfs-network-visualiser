@@ -157,7 +157,7 @@ def refresh_json_trip(url: str, output_name:str, whitelist: list=None, blacklist
 
 if __name__ == '__main__':
     start = time.perf_counter()
-    refresh_json_trip(config["tango"]["trip-updates"],'trip_updates.json')
-    refresh_json_position(config["tango"]["bus-position"],'bus-position.json')
+    refresh_json_trip(config["blank"]["trip-updates"],'trip_updates.json')
+    refresh_json_position(config["blank"]["bus-position"],'bus-position.json')
     end = time.perf_counter()
     print(end - start)
