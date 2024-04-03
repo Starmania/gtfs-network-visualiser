@@ -7,7 +7,6 @@ from os.path import abspath, dirname , join
 
 here = dirname(abspath(__file__))
 
-
 config = yaml.load(open(f"services.yml").read(), Loader=yaml.CLoader)
 
 ########################## URL TO FEED
@@ -27,9 +26,7 @@ def urltofeed_content(url: str)->gtfs.FeedMessage:
     return feed
 
 
-
 ########################## FEEDBUS TO JSON
-
 def feedposition_to_dict(feed: gtfs.FeedMessage, whitelist: list = None, blacklist: list = None):
     def check(entity: gtfs.FeedEntity):
         if not (whitelist is None or entity.id in whitelist):
@@ -85,41 +82,11 @@ def refresh_json_position(url: str, output_name:str, whitelist: list = None, bla
     big_dict = feedposition_to_dict(feed,whitelist,blacklist)
 
 
-
     with open(join(here, output_name), "w") as outfile: 
         json.dump(big_dict, outfile, indent=4,sort_keys=True)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ########################## FEEDTRIP_UPDATE TO JSON
-
-
 def feedtrip_update_to_dict(feed: gtfs.FeedMessage, whitelist: list = None, blacklist: list = None):
     def check(entity: str):
         if not (whitelist is None or entity.id in whitelist):
@@ -166,9 +133,6 @@ def feedtrip_update_to_dict(feed: gtfs.FeedMessage, whitelist: list = None, blac
                     big_dict[f'entityid{entity.id}'].update(to_add)
                 
 
-
-
-
     return big_dict
 
 def refresh_json_trip(url: str, output_name:str, whitelist: list=None, blacklist: list=None):
@@ -189,14 +153,7 @@ def refresh_json_trip(url: str, output_name:str, whitelist: list=None, blacklist
 
 
 
-
 #MAIN#
-
-
-# print(config)
-
-#refresh_json_position(config["tango"]["bus-position"],'none.json')
-
 
 if __name__ == '__main__':
     start = time.perf_counter()
