@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<!-- This document is a map containing bus routes -->
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+    <!-- JQuery 3.7.1 -->
+    <script src="/static/libs/jquery-3.7.1.js"></script>
+
+    <!-- Bootstrap 4.6.2 -->
+    <script src="/static/libs/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/static/libs/bootstrap.min.css" />
+
+    <!-- Bootstrap Select 1.13.18 -->
+    <script src="/static/libs/bootstrap-select.js"></script>
+    <link rel="stylesheet" href="/static/libs/bootstrap-select.min.css" />
+
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" /> -->
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" /> -->
+
+    <!-- Leaflet 1.9.4 -->
+    <script src="/static/libs/leaflet.js"></script>
+    <link rel="stylesheet" href="/static/libs/leaflet.css" />
+
+    <!-- Leaflet Awesome Markers 2.0.2 -->
+    <script src="/static/libs/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="/static/libs/leaflet.awesome-markers.css" />
+
+    <!-- Socket.io 4.7.5 -->
+    <script src="/static/libs/socket.io.js"></script>
+
+    <!-- Useful script -->
+    <script src="/static/js/useful.js"></script>
+
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+
+        ;
+
+        .leaflet-container {
+            font-size: 1rem;
+        }
+
+        ;
+    </style>
+
+</head>
+
+<body>
+
+    <div id="map" class="leaflet-map"></div>
+    <div class="selector">
+        <select class="selectpicker" multiple data-live-search="true" data-width="auto" data-none-selected-text="Chargement...">
+        </select>
+    </div>
+    <script>
+        window.map = L.map(
+            'map',
+            {
+                center: [43.833843834747796, 4.3639855997903005],
+                crs: L.CRS.EPSG3857,
+                zoom: 13,
+                zoomControl: true,
+                preferCanvas: false,
+            }
+        )
+
+        let tile_layer = L.tileLayer(
+            "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+            { "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false }
+        );
+        tile_layer.addTo(map);
+    </script>
+    <style>
+        .selector {
+            position: absolute;
+            top: 10px;
+            right: 110px;
+            z-index: 1000;
+            background: rgb(255, 255, 255);
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        ;
+    </style>
+    <script src="/static/js/socket.js"></script>
+</body>
+
+
+</html>
