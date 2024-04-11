@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start server",
+            "type": "shell",
+            // "windows": {
+            //     "command": "${workspaceFolder}/.vscode/start_server.bat"
+            // },
+            "command": "source ${workspaceFolder}/.vscode/start_server.sh",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "Add Gtfs Types",
+            "type": "shell",
+            "command": "${workspaceFolder}/.vscode/run_simple_python.sh",
+            "args": [
+                "${workspaceFolder}/add_gtfs_typing.py"
+            ],
+            "windows": {
+                "command": "python ${workspaceFolder}/add_gtfs_typing.py"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}
